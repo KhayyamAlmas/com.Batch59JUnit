@@ -1,4 +1,4 @@
-package day05_Junit;
+package day06_radioButton_checkBox;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
@@ -52,7 +52,7 @@ public class C05_TekrarTesti {
         // 7- Sonuc sayisinin 10 milyon’dan fazla oldugunu test edin
         int actualNumber= Integer.parseInt(arr[1].replace(".",""));
         int expectedNumber= 10000000;
-        Assert.assertTrue("Aranan sonuc beklenenden az cikti",actualNumber>expectedNumber);
+        Assert.assertTrue("Aranan sonuc testi FAILED",actualNumber>expectedNumber);
         // 8- Sayfayi kapatin
     }
 }

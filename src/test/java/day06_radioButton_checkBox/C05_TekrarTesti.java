@@ -39,7 +39,7 @@ public class C05_TekrarTesti {
         // 4- Sayfa basliginin “Google” ifadesi icerdigini test edin
         String expectedTitle="Google";
         String actualTitle=driver.getTitle();
-        Assert.assertTrue("Baslik beklenenden farkli",expectedTitle.equals(actualTitle));
+        Assert.assertTrue(expectedTitle.equals(actualTitle));
 
         // 5- Arama cubuguna “Nutella” yazip aratin
         driver.findElement(By.xpath("//input[@class='gLFyf gsfi']")).sendKeys("Nutella", Keys.ENTER);
@@ -52,7 +52,7 @@ public class C05_TekrarTesti {
         // 7- Sonuc sayisinin 10 milyon’dan fazla oldugunu test edin
         int actualNumber= Integer.parseInt(arr[1].replace(".",""));
         int expectedNumber= 10000000;
-        Assert.assertTrue("Aranan sonuc testi FAILED",actualNumber>expectedNumber);
+        Assert.assertTrue(actualNumber>expectedNumber);
         // 8- Sayfayi kapatin
     }
 }

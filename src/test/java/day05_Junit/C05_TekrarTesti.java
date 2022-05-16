@@ -1,10 +1,11 @@
 package day05_Junit;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -12,7 +13,7 @@ import java.time.Duration;
 public class C05_TekrarTesti {
     WebDriver driver;
 
-    @BeforeClass
+    @Before
     public void setUp() {
 
 
@@ -22,7 +23,7 @@ public class C05_TekrarTesti {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
-    @AfterClass
+    @After
     public void tearDown() {
         driver.close();
     }
@@ -36,9 +37,22 @@ public class C05_TekrarTesti {
 
         // 3- cookies uyarisini kabul ederek kapatin
         // 4- Sayfa basliginin “Google” ifadesi icerdigini test edin
+        String expectedTitle="Google";
+        String actualTitle=driver.getTitle();
+        Assert.assertTrue("Baslik beklenenden farkli",expectedTitle.equals(actualTitle));
+
         // 5- Arama cubuguna “Nutella” yazip aratin
+        driver.findElement(By.xpath("//input[@class='gLFyf gsfi']")).sendKeys("Nutella", Keys.ENTER);
+
         // 6- Bulunan sonuc sayisini yazdirin
+        WebElement bulunanSonuc = driver.findElement(By.xpath("//div[@id='result-stats']"));
+        String []arr=bulunanSonuc.getText().split(" ");
+        System.out.println("Nutella aramasindan bulunan sonuc: "+arr[1]);
+
         // 7- Sonuc sayisinin 10 milyon’dan fazla oldugunu test edin
+        int actualNumber= Integer.parseInt(arr[1].replace(".",""));
+        int expectedNumber= 10000000;
+        Assert.assertTrue("Aranan sonuc beklenenden az cikti",actualNumber>expectedNumber);
         // 8- Sayfayi kapatin
     }
 }

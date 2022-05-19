@@ -106,5 +106,6 @@ public class C03_windowHandles {
         expectedTitle="The Internet";
         actualTitle=driver.getTitle();
         Assert.assertEquals(expectedTitle,actualTitle);
+
     }
 }
